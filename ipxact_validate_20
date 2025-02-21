@@ -1,0 +1,29 @@
+#! /usr/bin/env ruby
+# ============================================================================ #
+#  Copyright (c) 2011-2020 Advanced Micro Devices, Inc.  All rights reserved.  #
+# ============================================================================ #
+#
+# Program to validate a file against the IP-Xact Schema
+#
+
+require "nokogiri"
+
+schema_directory = "#{ENV["RUBIX_HOME"]}/ipxact/2.0/schema"
+schema_root_filename = "index.xsd"
+
+schema = nil
+Dir::chdir(schema_directory) do
+  schema = Nokogiri::XML::Schema(File.read(schema_root_filename))
+end
+
+doc_filename = ARGV[0]
+
+docfile = Nokogiri::XML(File.read(doc_filename))
+
+status = 0
+schema.validate(docfile).each do |error|
+  puts "ERROR: Line #{error.line}: #{error.message}"
+  status += 1
+end
+exit status
+
