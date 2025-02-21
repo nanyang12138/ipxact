@@ -8,7 +8,7 @@
 
 require "nokogiri"
 
-schema_directory = "#{ENV["RUBIX_HOME"]}/ipxact/2.0/schema"
+schema_directory = "#{File.dirname(__FILE__)}/ipxact_schema_files/1685-2009"
 schema_root_filename = "index.xsd"
 
 schema = nil
