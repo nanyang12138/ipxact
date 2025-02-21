@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project>
+	<Folder FolderName="XML Files" ExtStr="xml;cml;math;mtx;rdf;smil;svg;wml"/>
+	<Folder FolderName="XSL Files" ExtStr="xsl;xslt"/>
+	<Folder FolderName="XQuery Files" ExtStr="xq;xql;xquery"/>
+	<Folder FolderName="HTML Files" ExtStr="html;htm;xhtml;asp"/>
+	<Folder FolderName="DTD/Schemas" ExtStr="dtd;dcd;xdr;biz;xsd">
+		<File FilePath="abstractionDefinition.xsd" HomeFolder="Yes"/>
+		<File FilePath="abstractor.xsd" HomeFolder="Yes"/>
+		<File FilePath="autoConfigure.xsd" HomeFolder="Yes"/>
+		<File FilePath="busDefinition.xsd" HomeFolder="Yes"/>
+		<File FilePath="busInterface.xsd" HomeFolder="Yes"/>
+		<File FilePath="commonStructures.xsd" HomeFolder="Yes"/>
+		<File FilePath="component.xsd" HomeFolder="Yes"/>
+		<File FilePath="configurable.xsd" HomeFolder="Yes"/>
+		<File FilePath="constraints.xsd" HomeFolder="Yes"/>
+		<File FilePath="design.xsd" HomeFolder="Yes"/>
+		<File FilePath="designConfig.xsd" HomeFolder="Yes"/>
+		<File FilePath="file.xsd" HomeFolder="Yes"/>
+		<File FilePath="fileType.xsd" HomeFolder="Yes"/>
+		<File FilePath="generator.xsd" HomeFolder="Yes"/>
+		<File FilePath="identifier.xsd" HomeFolder="Yes"/>
+		<File FilePath="index.xsd" HomeFolder="Yes"/>
+		<File FilePath="memoryMap.xsd" HomeFolder="Yes"/>
+		<File FilePath="model.xsd" HomeFolder="Yes"/>
+		<File FilePath="port.xsd" HomeFolder="Yes"/>
+		<File FilePath="signalDrivers.xsd" HomeFolder="Yes"/>
+		<File FilePath="simpleTypes.xsd" HomeFolder="Yes"/>
+		<File FilePath="subInstances.xsd" HomeFolder="Yes"/>
+	</Folder>
+	<Folder FolderName="Entities" ExtStr="ent"/>
+</Project>

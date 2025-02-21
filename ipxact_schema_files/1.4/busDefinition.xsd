@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+// Description : busDefinition.xsd
+// Author: The SPIRIT Consortium Schema Working Group
+// 
+// Revision:    $Revision: 1235 $
+// Date:        $Date: 2008-04-03 10:08:47 -0700 (Thu, 03 Apr 2008) $
+// 
+// Copyright (c) 2005, 2006, 2007, 2008 The SPIRIT Consortium.
+// 
+// This work forms part of a deliverable of The SPIRIT Consortium.
+// 
+// Use of these materials are governed by the legal terms and conditions
+// outlined in the disclaimer available from www.spiritconsortium.org.
+// 
+// This source file is provided on an AS IS basis.  The SPIRIT
+// Consortium disclaims any warranty express or implied including
+// any warranty of merchantability and fitness for use for a
+// particular purpose.
+// 
+// The user of the source file shall indemnify and hold The SPIRIT
+// Consortium and its members harmless from any damages or liability.
+// Users are requested to provide feedback to The SPIRIT Consortium
+// using either mailto:feedback@lists.spiritconsortium.org or the forms at 
+// http://www.spiritconsortium.org/about/contact_us/
+// 
+// This file may be copied, and distributed, WITHOUT
+// modifications; this notice must be included on any copy.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1.4" targetNamespace="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1.4" elementFormDefault="qualified" attributeFormDefault="qualified">
+	<xs:include schemaLocation="identifier.xsd"/>
+	<xs:include schemaLocation="commonStructures.xsd"/>
+	<xs:include schemaLocation="port.xsd"/>
+	<xs:include schemaLocation="generator.xsd"/>
+	<xs:include schemaLocation="constraints.xsd"/>
+	<xs:group name="portProperties">
+		<xs:sequence>
+			<xs:choice minOccurs="0">
+				<xs:element name="direction" type="spirit:componentPortDirectionType" default="out"/>
+				<xs:element ref="spirit:initiative"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:group>
+	<xs:element name="busDefinition">
+		<xs:annotation>
+			<xs:documentation>Defines the structural information associated with a bus type, independent of the abstraction level.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:group ref="spirit:versionedIdentifier"/>
+				<xs:element name="directConnection" type="xs:boolean">
+					<xs:annotation>
+						<xs:documentation>This element indicates that a master interface may be directly connected to a slave interface (under certain conditions) for busses of this type.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="isAddressable" type="xs:boolean">
+					<xs:annotation>
+						<xs:documentation>If true, indicates that this is an addressable bus.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="extends" type="spirit:libraryRefType" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Optional name of bus type that this bus definition is compatible with. This bus definition may change the definitions in the existing bus definition</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="maxMasters" type="xs:nonNegativeInteger" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Indicates the maximum number of masters this bus supports.  If this element is not present, the number of masters allowed is unbounded. </xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="maxSlaves" type="xs:nonNegativeInteger" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Indicates the maximum number of slaves this bus supports.  If the element is not present, the number of slaves allowed is unbounded.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="systemGroupNames" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Indicates the list of system group names that are defined for this bus definition.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="systemGroupName" type="xs:Name" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>Indicates the name of a system group defined for this bus definition.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="description" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>String for describing the bus definition to users; no semantic impact</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="spirit:vendorExtensions" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+		<xs:key name="systemGroupNameKey">
+			<xs:selector xpath="spirit:systemGroupNames/spirit:systemGroupName"/>
+			<xs:field xpath="."/>
+		</xs:key>
+	</xs:element>
+</xs:schema>
