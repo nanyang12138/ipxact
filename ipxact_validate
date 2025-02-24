@@ -1,8 +1,4 @@
 #! /usr/bin/env ruby
-# ============================================================================ #
-#  Copyright (c) 2011-2020 Advanced Micro Devices, Inc.  All rights reserved.  #
-# ============================================================================ #
-#
 # Program to validate a file against the IP-Xact Schema
 #
 
